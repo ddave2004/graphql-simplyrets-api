@@ -22,9 +22,18 @@ SIMPLYRETS_PASSWORD=<<simplyrets password>
 
 ```
 
+## Start the server
 
+To start the server,  run node command :
+```
+npm install 
+npm start
+```
 
 
 ### Assumption :
  - simplyRETS class is returning data, it can also return Promise depends on blocking and non blocking threads plan at architecture level.
  - simplyRETS class can also be singleTon instance.
+
+
+ ##
