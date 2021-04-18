@@ -1,6 +1,11 @@
 
-describe("simplyRETS", () => {
+import simplyrets from './simplyRETS'
 
+describe("simplyRETS", () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    })
+    
     it("should return listing when valid credentials", () => {
         expect(1==1).toEqual(true);
     });
