@@ -15,7 +15,7 @@ class simplyretsApi {
     GetPropertiesByCity(city = 'Houston') {
 
         var thiscontext = this
-
+        //TODO : CACHING of Promise or DATA ??
         return new Promise((resolve, reject) => {
 
             fetch(`${SIMPLYRETS_URL}?cities=${city}`, {
@@ -33,7 +33,6 @@ class simplyretsApi {
         });
     }
 
-    // Question :can this be singelton instance ?
     // init({ user, password }) {
     //     this._btoa = btoa(`${user}:${password}`)
     // }
@@ -46,4 +45,4 @@ module.exports = function (user, password) {
     })
 }
  //TODO : strategy of DEV vs PROD environment endpoint(if it is),  and auth credential.
- //TODO : fetch credential from .env
+ //TODO : Question :can this be singelton instance ?

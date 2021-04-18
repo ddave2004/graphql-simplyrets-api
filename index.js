@@ -16,6 +16,7 @@ const graphql_userId = process.env.GRAPHQL_USER
 const graphql_password = process.env.GRAPHQL_PASSWPRD
 const BearerToken = `Bearer ${graphql_userId}/${graphql_password}`
 
+
 async function startApolloServer() {
 
   const app = express();
@@ -70,3 +71,5 @@ async function startApolloServer() {
 }
 
 startApolloServer();
+
+//TODO : logging middelwere ?
