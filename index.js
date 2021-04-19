@@ -4,6 +4,12 @@ const types = require('./types/index')
 
 require('dotenv').config()
 
+if (!process.env.SIMPLYRETS_USER 
+    || !process.env.SIMPLYRETS_PASSWORD 
+    || !process.env.GRAPHQL_USER
+    || process.env.GRAPHQL_PASSWPRD) {
+      throw new Error("Environment variables not set. Please ensure Prerequisites in README");
+}
 const  { simplyRETS } = require("./listingApi")
 const simplyrets_user = process.env.SIMPLYRETS_USER 
 const simplyrets_password = process.env.SIMPLYRETS_PASSWORD
