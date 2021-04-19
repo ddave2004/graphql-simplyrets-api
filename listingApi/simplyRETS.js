@@ -6,6 +6,9 @@ var fetch = require('cross-fetch')
 
 const SIMPLYRETS_URL = "https://api.simplyrets.com/properties"
 
+function getConfigIsCachingEnabled(){
+    return true;
+}
 /**
  * @example
  * var api = new simplyRETS(simplyrets_user,simplyrets_password);
@@ -20,7 +23,8 @@ class simplyretsApi {
 
     _getApiPromise(city){
         
-        if (this._ApiPromises[city] && !this._ApiPromises[city].resolved) {
+        //TODO :hide this behind some config to enable or disable
+        if (getConfigIsCachingEnabled() && this._ApiPromises[city] && !this._ApiPromises[city].resolved) {
             return this._ApiPromises[city];
         }
 
@@ -28,10 +32,14 @@ class simplyretsApi {
             method: 'GET',
             headers: { 'Authorization': `Basic ${this._btoa}` }
         });
-        this._ApiPromises[city] = {
-            prommise : promise,
-            resolved: false,
-            data : []
+        
+        // tech debt : optimize logic to evaluate conditon only one time
+        if (getConfigIsCachingEnabled()) {
+            this._ApiPromises[city] = {
+                prommise : promise,
+                resolved: false,
+                data : []
+            }
         }
 
         return promise;
