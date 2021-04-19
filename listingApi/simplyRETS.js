@@ -49,7 +49,7 @@ class simplyretsApi {
      * @param {String} city 
      * @returns [ Listting ]
      */
-    GetPropertiesByCity(city = 'Houston') {
+    GetPropertiesByCity(city = 'Houston',limit=25,offset=25) { //TODO : pagination consideration?
         //TODO : CACHING of Promise or DATA ??
         return new Promise((resolve, reject) => {
                 this._getApiPromise(city)
